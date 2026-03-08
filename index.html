@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <title>З 8 Березня!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Anton&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f0e8;
+      --yellow: #FFE600;
+      --lilac: #B57BFF;
+      --lilac-dark: #7C3AED;
+      --lilac-light: #EDE0FF;
+      --border: 3px solid var(--black);
+      --shadow: 6px 6px 0 var(--black);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--white);
+      font-family: 'Space Mono', monospace;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      background-size: 200px; pointer-events: none; z-index: 9999;
+    }
+
+    /* MARQUEE */
+    .marquee-wrap { background: var(--black); color: var(--lilac); overflow: hidden; border-bottom: var(--border); white-space: nowrap; padding: 9px 0; }
+    .marquee-inner { display: inline-block; animation: marquee 18s linear infinite; font-family: 'Bebas Neue', sans-serif; font-size: clamp(.95rem,2.5vw,1.35rem); letter-spacing: .12em; }
+    .marquee-inner span { margin: 0 32px; }
+    @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+    /* HEADER */
+    header { border-bottom: var(--border); padding: 13px 20px; display: flex; align-items: center; justify-content: space-between; background: var(--white); position: sticky; top: 0; z-index: 100; }
+    .logo { font-family: 'Anton', sans-serif; font-size: clamp(1.2rem,4vw,1.6rem); letter-spacing: .05em; }
+    .logo span { color: var(--lilac); }
+    .date-badge { background: var(--black); color: var(--lilac); font-family: 'Bebas Neue', sans-serif; font-size: clamp(.82rem,2.5vw,1.1rem); padding: 5px 14px; letter-spacing: .1em; white-space: nowrap; }
+
+    /* HERO */
+    .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(100svh - 86px); }
+
+    .hero-left { background: var(--yellow); border-right: var(--border); padding: clamp(28px,6vw,60px) clamp(20px,5vw,48px); display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+    .hero-left::after { content: '✿'; position: absolute; bottom: -30px; right: -15px; font-size: clamp(130px,20vw,250px); opacity: .07; line-height: 1; pointer-events: none; }
+
+    .banner-label { font-size: clamp(.58rem,1.4vw,.82rem); font-weight: 700; letter-spacing: .2em; text-transform: uppercase; background: var(--black); color: var(--yellow); display: inline-block; padding: 4px 10px; margin-bottom: 16px; width: fit-content; }
+    .banner-title { font-family: 'Anton', sans-serif; font-size: clamp(4rem,11vw,9rem); line-height: .88; color: var(--black); }
+    .banner-title .highlight { color: var(--lilac-dark); display: block; -webkit-text-stroke: 1px var(--black); }
+    .banner-sub { margin-top: 18px; font-size: clamp(.7rem,1.6vw,.88rem); max-width: 300px; line-height: 1.6; border-left: 4px solid var(--black); padding-left: 12px; }
+
+    .gift-btn { margin-top: clamp(24px,5vw,42px); display: inline-flex; align-items: center; gap: 10px; background: var(--black); color: var(--lilac); font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.2rem,4vw,1.8rem); letter-spacing: .1em; padding: clamp(13px,3vw,18px) clamp(22px,5vw,38px); border: var(--border); box-shadow: var(--shadow); cursor: pointer; transition: transform .12s, box-shadow .12s, background .15s; width: fit-content; z-index: 1; position: relative; -webkit-tap-highlight-color: transparent; }
+    .gift-btn:hover  { transform: translate(-3px,-3px); box-shadow: 9px 9px 0 var(--black); background: var(--lilac-dark); }
+    .gift-btn:active { transform: translate(2px,2px); box-shadow: 2px 2px 0 var(--black); }
+    .gift-btn .arrow { transition: transform .2s; }
+    .gift-btn:hover .arrow { transform: translateX(5px); }
+
+    .hero-right { background: var(--lilac-light); padding: clamp(28px,6vw,60px) clamp(20px,5vw,48px); display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+    .hero-right::before { content: '★'; position: absolute; top: -30px; right: -20px; font-size: clamp(150px,22vw,280px); color: var(--lilac-dark); opacity: .06; }
+    .sticker-box { border: var(--border); background: var(--white); padding: 18px 22px; box-shadow: var(--shadow); max-width: 300px; position: relative; z-index: 1; }
+    .sticker-box h3 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1rem,2.2vw,1.25rem); letter-spacing: .08em; margin-bottom: 6px; }
+    .sticker-box p { font-size: clamp(.66rem,1.4vw,.76rem); line-height: 1.6; color: #444; }
+    .big-num { font-family: 'Anton', sans-serif; font-size: clamp(6rem,17vw,15rem); line-height: .85; color: var(--lilac-dark); opacity: .09; position: absolute; bottom: 12px; right: 16px; pointer-events: none; }
+
+    /* BOTTOM STRIP */
+    .bottom-strip { border-top: var(--border); background: var(--lilac-dark); display: grid; grid-template-columns: repeat(4,1fr); }
+    .strip-item { padding: clamp(11px,2.5vw,20px) clamp(14px,3vw,26px); border-right: 2px solid rgba(255,255,255,.2); color: var(--white); }
+    .strip-item:last-child { border-right: none; }
+    .strip-item .s-label { font-size: clamp(.54rem,1.1vw,.63rem); letter-spacing: .18em; text-transform: uppercase; opacity: .55; margin-bottom: 2px; }
+    .strip-item .s-val { font-family: 'Bebas Neue', sans-serif; font-size: clamp(.95rem,2.2vw,1.25rem); letter-spacing: .06em; }
+
+    /* POPUP */
+    #popup-overlay { display: none; position: fixed; inset: 0; z-index: 1000; background: #0c0c16; flex-direction: column; }
+    #popup-overlay.active { display: flex; }
+    .popup-topbar { flex-shrink: 0; background: rgba(0,0,0,.55); border-bottom: 2px solid rgba(181,123,255,.18); padding: 13px 18px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .popup-topbar h2 { font-family: 'Anton', sans-serif; font-size: clamp(1rem,4vw,1.55rem); color: var(--white); letter-spacing: .06em; }
+    .popup-topbar h2 span { color: var(--lilac); }
+    .popup-close { flex-shrink: 0; background: var(--lilac); border: 2px solid rgba(255,255,255,.25); color: var(--black); font-family: 'Bebas Neue', sans-serif; font-size: clamp(.9rem,2.5vw,1.25rem); padding: 5px 16px; cursor: pointer; letter-spacing: .1em; transition: background .15s; -webkit-tap-highlight-color: transparent; }
+    .popup-close:hover { background: #fff; }
+
+    /* CAMERA HALVES */
+    .cameras-container { flex: 1; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; position: relative; }
+    .cam-side { display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; position: relative; overflow: hidden; padding: clamp(14px,3.5vw,36px) clamp(14px,3vw,28px); transition: background .25s; -webkit-tap-highlight-color: transparent; outline: none; }
+    .cam-side:focus-visible { outline: 3px solid var(--lilac); outline-offset: -3px; }
+    .cam-side.left  { background: #111118; border-right: 2px solid rgba(181,123,255,.14); }
+    .cam-side.right { background: #0e0e1a; }
+    .cam-side::before { content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity .35s; pointer-events: none; }
+    .cam-side.left::before  { background: radial-gradient(ellipse at center, rgba(181,123,255,.22) 0%, transparent 65%); }
+    .cam-side.right::before { background: radial-gradient(ellipse at center, rgba(255,230,0,.16) 0%, transparent 65%); }
+    .cam-side:hover::before { opacity: 1; }
+
+    .cam-brand { font-family: 'Bebas Neue', sans-serif; font-size: clamp(.65rem,1.6vw,.88rem); letter-spacing: .3em; color: rgba(255,255,255,.32); margin-bottom: 8px; }
+
+    .cam-img-wrap { width: clamp(120px,26vw,230px); height: clamp(120px,26vw,230px); display: flex; align-items: center; justify-content: center; margin-bottom: clamp(14px,2.5vw,24px); transition: transform .35s cubic-bezier(.34,1.4,.64,1); position: relative; z-index: 1; }
+    .cam-side:hover .cam-img-wrap { transform: scale(1.08) translateY(-7px); }
+    .cam-img-wrap svg { width: 100%; height: 100%; filter: drop-shadow(0 16px 32px rgba(0,0,0,.8)); }
+
+    .cam-name { font-family: 'Anton', sans-serif; font-size: clamp(1.5rem,4vw,3rem); color: var(--white); letter-spacing: .02em; text-align: center; line-height: .95; position: relative; z-index: 1; }
+    .cam-side.left  .cam-name span { color: var(--lilac); }
+    .cam-side.right .cam-name span { color: var(--yellow); }
+
+    .cam-tag { margin-top: 9px; font-size: clamp(.58rem,1.3vw,.68rem); letter-spacing: .11em; color: rgba(255,255,255,.32); border: 1px solid rgba(255,255,255,.12); padding: 3px 10px; text-align: center; text-transform: uppercase; position: relative; z-index: 1; }
+
+    .cam-cta { margin-top: clamp(14px,2.5vw,24px); background: transparent; border: 2px solid rgba(255,255,255,.17); color: var(--white); font-family: 'Bebas Neue', sans-serif; font-size: clamp(.95rem,2.5vw,1.25rem); letter-spacing: .12em; padding: clamp(9px,1.8vw,13px) clamp(18px,3.5vw,32px); cursor: pointer; transition: all .2s; text-transform: uppercase; position: relative; z-index: 1; pointer-events: none; }
+    .cam-side.left:hover  .cam-cta { background: var(--lilac); color: var(--black); border-color: var(--lilac); }
+    .cam-side.right:hover .cam-cta { background: var(--yellow); color: var(--black); border-color: var(--yellow); }
+
+    .vs-divider { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: clamp(38px,7vw,52px); height: clamp(38px,7vw,52px); background: var(--white); border: 3px solid var(--black); display: flex; align-items: center; justify-content: center; font-family: 'Anton', sans-serif; font-size: clamp(.75rem,1.8vw,1rem); z-index: 20; box-shadow: 0 4px 18px rgba(0,0,0,.65); pointer-events: none; }
+
+    /* TOAST */
+    #toast { display: none; position: fixed; bottom: clamp(18px,5vw,40px); left: 50%; transform: translateX(-50%); z-index: 2000; background: var(--lilac); color: var(--black); font-family: 'Anton', sans-serif; font-size: clamp(1.05rem,3.5vw,1.55rem); letter-spacing: .06em; padding: clamp(13px,2.5vw,18px) clamp(22px,5vw,44px); border: 4px solid var(--black); box-shadow: 8px 8px 0 var(--black); text-align: center; min-width: clamp(240px,75vw,340px); max-width: 90vw; animation: toastIn .45s cubic-bezier(.34,1.56,.64,1) forwards; }
+    #toast.show { display: block; }
+    #toast .toast-sub { display: block; font-family: 'Space Mono', monospace; font-size: clamp(.58rem,1.6vw,.7rem); font-weight: 400; margin-top: 4px; opacity: .72; }
+    @keyframes toastIn { from{opacity:0;transform:translateX(-50%) translateY(28px) scale(.92)} to{opacity:1;transform:translateX(-50%) translateY(0) scale(1)} }
+
+    /* RESPONSIVE */
+    @media (max-width: 767px) {
+      .hero { grid-template-columns: 1fr; min-height: calc(100svh - 84px); }
+      .hero-right { display: none; }
+      .hero-left { border-right: none; padding: 32px 22px 40px; }
+      .banner-title { font-size: clamp(4.2rem,21vw,6.5rem); }
+      .bottom-strip { grid-template-columns: 1fr 1fr; }
+      .strip-item { border-bottom: 2px solid rgba(255,255,255,.14); }
+      .strip-item:nth-child(odd)  { border-right: 2px solid rgba(255,255,255,.2); }
+      .strip-item:nth-child(even) { border-right: none; }
+    }
+    @media (max-width: 600px) {
+      .cameras-container { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+      .cam-side.left { border-right: none; border-bottom: 2px solid rgba(181,123,255,.14); }
+      .vs-divider { width: 40px; height: 40px; font-size: .75rem; }
+      .cam-img-wrap { width: clamp(90px,28vw,150px); height: clamp(90px,28vw,150px); }
+      .cam-name { font-size: clamp(1.4rem,7vw,2rem); }
+    }
+    @supports (padding: max(0px)) {
+      header { padding-left: max(20px,env(safe-area-inset-left)); padding-right: max(20px,env(safe-area-inset-right)); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-inner">
+    <span>З 8 БЕРЕЗНЯ ✿</span><span>HAPPY WOMEN'S DAY ★</span>
+    <span>З 8 БЕРЕЗНЯ ✿</span><span>HAPPY WOMEN'S DAY ★</span>
+    <span>З 8 БЕРЕЗНЯ ✿</span><span>HAPPY WOMEN'S DAY ★</span>
+    <span>З 8 БЕРЕЗНЯ ✿</span><span>HAPPY WOMEN'S DAY ★</span>
+  </div>
+</div>
+
+<header>
+  <div class="logo">GIFT<span>.</span>UA</div>
+  <div class="date-badge">08.03.2026</div>
+</header>
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="banner-label">Спеціально для тебе</div>
+    <div class="banner-title">
+      З<br><span class="highlight">8</span>БЕРЕЗ&shy;НЯ!
+    </div>
+    <p class="banner-sub">Ти заслуговуєш на щось особливе.<br>Обери свій подарунок — і чекай на дива ✨</p>
+    <button class="gift-btn" onclick="openPopup()">Твій подарунок <span class="arrow">→</span></button>
+  </div>
+  <div class="hero-right" aria-hidden="true">
+    <div class="sticker-box">
+      <h3>Сьогодні особливий день!</h3>
+      <p>Тільки сьогодні ти можеш обрати свій ексклюзивний подарунок. Два варіанти — один вибір.</p>
+    </div>
+    <div class="big-num">8</div>
+  </div>
+</div>
+
+<div class="bottom-strip" aria-hidden="true">
+  <div class="strip-item"><div class="s-label">Дата</div><div class="s-val">8 березня</div></div>
+  <div class="strip-item"><div class="s-label">Категорія</div><div class="s-val">Tech Gift</div></div>
+  <div class="strip-item"><div class="s-label">Варіанти</div><div class="s-val">2 камери</div></div>
+  <div class="strip-item"><div class="s-label">Для тебе</div><div class="s-val">Завжди ✿</div></div>
+</div>
+
+<!-- POPUP -->
+<div id="popup-overlay" role="dialog" aria-modal="true">
+  <div class="popup-topbar">
+    <h2>Обери свій <span>подарунок</span></h2>
+    <button class="popup-close" onclick="closePopup()">✕ Закрити</button>
+  </div>
+  <div class="cameras-container">
+
+    <!-- INSTA360 X5 -->
+    <div class="cam-side left" onclick="selectCamera()" role="button" tabindex="0" onkeydown="if(event.key==='Enter')selectCamera()">
+      <div class="cam-brand">Insta360</div>
+      <div class="cam-img-wrap">
+        <!-- Insta360 X5: slim dual-lens 360 action cam -->
+        <svg viewBox="0 0 200 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Body -->
+          <rect x="70" y="20" width="60" height="220" rx="16" fill="#1a1a2e" stroke="#B57BFF" stroke-width="2.5"/>
+          <!-- Front lens bubble top -->
+          <ellipse cx="100" cy="42" rx="22" ry="22" fill="#0d0d1a" stroke="#B57BFF" stroke-width="2"/>
+          <ellipse cx="100" cy="42" rx="15" ry="15" fill="#2a1a4e"/>
+          <ellipse cx="100" cy="42" rx="9" ry="9" fill="#6030c0"/>
+          <ellipse cx="100" cy="42" rx="4" ry="4" fill="#c890ff"/>
+          <ellipse cx="97" cy="39" rx="1.5" ry="1.5" fill="white" opacity=".6"/>
+          <!-- Front lens bubble bottom -->
+          <ellipse cx="100" cy="218" rx="22" ry="22" fill="#0d0d1a" stroke="#B57BFF" stroke-width="2"/>
+          <ellipse cx="100" cy="218" rx="15" ry="15" fill="#2a1a4e"/>
+          <ellipse cx="100" cy="218" rx="9" ry="9" fill="#6030c0"/>
+          <ellipse cx="100" cy="218" rx="4" ry="4" fill="#c890ff"/>
+          <ellipse cx="97" cy="215" rx="1.5" ry="1.5" fill="white" opacity=".6"/>
+          <!-- Screen area -->
+          <rect x="78" y="100" width="44" height="60" rx="4" fill="#0a0a1f" stroke="#B57BFF" stroke-width="1.5"/>
+          <rect x="82" y="104" width="36" height="52" rx="2" fill="#1a0a3a"/>
+          <!-- Screen content hint -->
+          <text x="100" y="132" text-anchor="middle" font-size="9" fill="#B57BFF" font-family="monospace">360°</text>
+          <text x="100" y="146" text-anchor="middle" font-size="7" fill="#8855cc" font-family="monospace">8K</text>
+          <!-- Side button -->
+          <rect x="66" y="120" width="5" height="20" rx="2" fill="#333" stroke="#B57BFF" stroke-width="1"/>
+          <!-- Brand text -->
+          <text x="100" y="88" text-anchor="middle" font-size="7" fill="#7755aa" font-family="monospace" letter-spacing="1">INSTA360</text>
+          <!-- LED dot -->
+          <circle cx="100" cy="73" r="3" fill="#B57BFF" opacity=".8"/>
+          <!-- Sheen on body -->
+          <rect x="72" y="22" width="8" height="216" rx="8" fill="white" opacity=".04"/>
+        </svg>
+      </div>
+      <div class="cam-name">INSTA360<br><span>X5</span></div>
+      <div class="cam-tag">8K 360° · AI Editing · FlowState</div>
+      <div class="cam-cta">Обрати цю →</div>
+    </div>
+
+    <div class="vs-divider" aria-hidden="true">VS</div>
+
+    <!-- DJI OSMO 360 -->
+    <div class="cam-side right" onclick="selectCamera()" role="button" tabindex="0" onkeydown="if(event.key==='Enter')selectCamera()">
+      <div class="cam-brand">DJI</div>
+      <div class="cam-img-wrap">
+        <!-- DJI Osmo 360: wider body, dual lenses, touchscreen, DJI style -->
+        <svg viewBox="0 0 220 270" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Main body — slightly wider, more angular than Insta360 -->
+          <rect x="55" y="25" width="110" height="220" rx="14" fill="#141422" stroke="#FFE600" stroke-width="2.5"/>
+          <!-- Top lens assembly -->
+          <ellipse cx="110" cy="50" rx="28" ry="28" fill="#0a0a16" stroke="#FFE600" stroke-width="2"/>
+          <ellipse cx="110" cy="50" rx="20" ry="20" fill="#1a1a2e"/>
+          <ellipse cx="110" cy="50" rx="12" ry="12" fill="#333300"/>
+          <ellipse cx="110" cy="50" rx="6" ry="6" fill="#cc9900"/>
+          <ellipse cx="110" cy="50" rx="2.5" ry="2.5" fill="#FFE600"/>
+          <ellipse cx="107" cy="47" rx="1.5" ry="1.5" fill="white" opacity=".5"/>
+          <!-- Bottom lens assembly -->
+          <ellipse cx="110" cy="220" rx="28" ry="28" fill="#0a0a16" stroke="#FFE600" stroke-width="2"/>
+          <ellipse cx="110" cy="220" rx="20" ry="20" fill="#1a1a2e"/>
+          <ellipse cx="110" cy="220" rx="12" ry="12" fill="#333300"/>
+          <ellipse cx="110" cy="220" rx="6" ry="6" fill="#cc9900"/>
+          <ellipse cx="110" cy="220" rx="2.5" ry="2.5" fill="#FFE600"/>
+          <ellipse cx="107" cy="217" rx="1.5" ry="1.5" fill="white" opacity=".5"/>
+          <!-- OLED touchscreen -->
+          <rect x="68" y="100" width="74" height="70" rx="5" fill="#070712" stroke="#FFE600" stroke-width="1.5"/>
+          <rect x="72" y="104" width="66" height="62" rx="3" fill="#0e0e24"/>
+          <!-- Screen UI -->
+          <rect x="74" y="106" width="66" height="9" rx="1" fill="#1a1a00" opacity=".8"/>
+          <text x="110" y="114" text-anchor="middle" font-size="6" fill="#FFE600" font-family="monospace">● REC  8K/30</text>
+          <text x="110" y="130" text-anchor="middle" font-size="9" fill="#FFE600" font-family="monospace">360°</text>
+          <text x="110" y="144" text-anchor="middle" font-size="7" fill="#aa8800" font-family="monospace">1" SENSOR</text>
+          <text x="110" y="157" text-anchor="middle" font-size="6" fill="#555530" font-family="monospace">100min · 8K</text>
+          <!-- DJI logo area -->
+          <text x="110" y="90" text-anchor="middle" font-size="8" fill="#6a5500" font-family="monospace" letter-spacing="2">DJI</text>
+          <!-- Quick release base -->
+          <rect x="88" y="238" width="44" height="8" rx="3" fill="#222200" stroke="#FFE600" stroke-width="1"/>
+          <!-- Buttons -->
+          <rect x="51" y="115" width="5" height="18" rx="2" fill="#222" stroke="#FFE600" stroke-width=".8"/>
+          <rect x="51" y="140" width="5" height="12" rx="2" fill="#222" stroke="#FFE600" stroke-width=".8"/>
+          <rect x="164" y="118" width="5" height="14" rx="2" fill="#222" stroke="#FFE600" stroke-width=".8"/>
+          <!-- Sheen -->
+          <rect x="57" y="27" width="10" height="216" rx="8" fill="white" opacity=".03"/>
+          <!-- LED -->
+          <circle cx="110" cy="78" r="3" fill="#FFE600" opacity=".7"/>
+        </svg>
+      </div>
+      <div class="cam-name">DJI<br><span>OSMO 360</span></div>
+      <div class="cam-tag">1" Sensor · 8K · HorizonSteady</div>
+      <div class="cam-cta">Обрати цю →</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast" role="alert">
+  🎁 Чекай на свій подарунок!
+  <span class="toast-sub">Ти зробила вибір — незабаром буде сюрприз ✿</span>
+</div>
+
+<script>
+  function openPopup() {
+    document.getElementById('popup-overlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+  }
+  function closePopup() {
+    document.getElementById('popup-overlay').classList.remove('active');
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.width = '';
+  }
+  function selectCamera() {
+    closePopup();
+    const t = document.getElementById('toast');
+    t.style.animation = 'none';
+    t.offsetHeight;
+    t.style.animation = '';
+    t.classList.add('show');
+    setTimeout(() => {
+      t.style.transition = 'opacity .5s';
+      t.style.opacity = '0';
+      setTimeout(() => {
+        t.classList.remove('show');
+        t.style.opacity = '';
+        t.style.transition = '';
+      }, 500);
+    }, 4000);
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
+</script>
+</body>
+</html>
